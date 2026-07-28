@@ -1,1 +1,1 @@
-autoconfigure.com.ms.observability.ObservabilityAutoConfiguration
+com.ms.observability.autoconfigure.ObservabilityAutoConfiguration

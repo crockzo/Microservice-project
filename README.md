@@ -1,5 +1,10 @@
 Local Set up guide.
 
+Environment
+- Java version : 25
+- Spring boot version : 4.1.0
+- gradle : groovy
+
 First install the libraries 
 - Go to observation project and run
   - ./gradlew clean build

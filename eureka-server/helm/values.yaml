@@ -1,0 +1,105 @@
+appName: eureka-service
+# This is to override the chart name.
+nameOverride: ""
+fullnameOverride: ""
+
+replicaCount: 1
+imagePullSecrets: []
+
+container:
+  image:
+    repository: eureka-server-image
+    pullPolicy: Never
+    tag: ""
+  port: 8761
+  livenessProbe:
+    httpGet:
+      path: /actuator/health
+      port: http
+    initialDelaySeconds: 120
+    periodSeconds: 30
+    timeoutSeconds: 5
+  readinessProbe:
+    httpGet:
+      path: /actuator/health
+      port: http
+    initialDelaySeconds: 120
+    periodSeconds: 30
+    timeoutSeconds: 5
+  securityContext: {}
+    # capabilities:
+    #   drop:
+    #   - ALL
+    # readOnlyRootFilesystem: true
+    # runAsNonRoot: true
+    # runAsUser: 1000
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1536Mi
+    requests:
+      cpu: 500m
+      memory: 512Mi
+  volumeMounts: []
+  # - name: foo
+  #   mountPath: "/etc/foo"
+  #   readOnly: true
+
+pod:
+  annotations: {}
+  labels: {}
+  securityContext: {}
+    # fsGroup: 2000
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  volumes: []
+
+
+service:
+  type: ClusterIP
+  port: 80
+
+
+serviceAccount:
+  create: false
+  automount: true
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+
+
+
+# This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations: 
+    kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: localhost
+      paths:
+        - path: /service(/|$)(.*)
+          pathType: ImplementationSpecific
+
+httpRoute:
+  enabled: false
+
+  
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+
+configMap: 
+  example.property: This is an example property
+  # another.property: This is another property
+
+secrets: 
+  example.secret: ThisIsASecret

@@ -1,0 +1,420 @@
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaservice-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaservice
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaservice-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaservice-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaservice
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaservice-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaservice-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaservice
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaservice-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaservice-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaservice
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaservice-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaservice-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaservice
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaservice-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaservice-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaservice
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaservice-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaservice-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaservice
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaservice-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaserver-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaserver
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaserver-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaserver-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaserver
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaserver-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaserver-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaserver
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaserver-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaserver-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaserver
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaserver-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaserver-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaserver
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaserver-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaserver-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaserver
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaserver-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaserver-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaserver
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaserver-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaserver-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaserver
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaserver-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaserver-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaserver
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaserver-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaserver-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaserver
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaserver-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaserver-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaserver
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaserver-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaserver-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaserver
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaserver-helm:80']
+  restartPolicy: Never
+---
+# Source: helm/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "eurekaserver-helm-test-connection"
+  labels:
+    helm.sh/chart: helm-0.1.0
+    app.kubernetes.io/name: helm
+    app.kubernetes.io/instance: eurekaserver
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['eurekaserver-helm:80']
+  restartPolicy: Never

@@ -1,0 +1,67 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: book-api
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: "jdbc:mysql://localhost:3306/oplauth?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false"
+    username: root
+    password: qwer1234
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: "http://localhost:8761/eureka"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, env, configprops, metrics, mappings, prometheus, beans
+  endpoint:
+    health:
+      show-details: always
+
+  # Spring boot + Micrometer related metrics and tracing configs. For Spring-boot-Micrometer-* packages
+  otlp:
+    metrics:
+      export:
+        base-time-unit: SECONDS
+  tracing:
+    sampling:
+      probability: 1.0
+
+  # Open telemetry related configs. For all OpenTelemetry packages
+  opentelemetry:
+    enabled: true
+    logging:
+      export:
+        otlp:
+          endpoint: http://localhost:4318/v1/logs
+    tracing:
+      export:
+        otlp:
+          endpoint: http://localhost:4318/v1/traces
+
+#  metrics:
+#    distribution:
+#      slo:
+#        http.server.requests: 10, 25, 50, 75, 100, 150, 200, 300, 500, 750, 1000, 1500, 2000, 3000, 5000
+
+
+
+

@@ -1,0 +1,66 @@
+server:
+  port: 7070
+spring:
+  application:
+    name: user-api
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: "jdbc:mysql://localhost:3306/oplauth?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false"
+    username: root
+    password: qwer1234
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+#      naming:
+#        implicit-strategy: "org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl"
+#        physical-strategy: "org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl"
+
+eureka:
+  client:
+    service-url:
+      defaultZone: "http://localhost:8761/eureka"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, env, configprops, metrics, mappings, prometheus, beans
+  endpoint:
+    health:
+      show-details: always
+  otlp:
+    metrics:
+      export:
+        enabled: ${observability.enabled}
+  opentelemetry:
+    enabled: ${observability.enabled}
+    logging:
+      export:
+        otlp:
+          endpoint: http://localhost:4318/v1/logs
+    tracing:
+      export:
+        otlp:
+          endpoint: http://localhost:4318/v1/traces
+  tracing:
+    sampling:
+      probability: 1.0
+
+
+observability:
+  enabled: false
+  metrics:
+    enabled: ${observability.enabled}
+  tracing:
+    enabled: ${observability.enabled}
+  logging:
+    enabled: ${observability.enabled}

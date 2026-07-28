@@ -1,0 +1,81 @@
+plugins {
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
+    id 'java'
+    id 'java-library'
+//    id("io.freefair.lombok") version "9.5.0"
+}
+
+group = 'com.ms'
+version = '0.0.1-SNAPSHOT'
+description = 'Book service.'
+
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of("${javaVersion}")
+    }
+}
+
+repositories {
+    if (providers.gradleProperty('useMavenLocalRepo').map { it.toBoolean() }.getOrElse(false)) {
+        mavenLocal()
+    }
+    if (providers.gradleProperty('useSpringSnapshotsRepo').map { it.toBoolean() }.getOrElse(false)) {
+        maven { url = 'https://repo.spring.io/snapshot' }
+    }
+    mavenCentral()
+}
+
+
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
+    // observability Dependencies
+
+    // This actuator does not involve tracing ability at all, it just have metrics and observation spi
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    // This contains MeterRegistry for prometheus so that metrics can be set up from prometheus polling mechanism.
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+
+    // This contains micrometer tracing modules, mostly this
+    implementation 'org.springframework.boot:spring-boot-starter-opentelemetry'
+
+    // Source: https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
+//    implementation 'org.aspectj:aspectjweaver:1.9.25.1'
+//    implementation 'org.springframework.boot:spring-boot-starter-aop:4.0.0-M2'
+
+    // This contains all log related modules.
+    implementation "io.opentelemetry.instrumentation:opentelemetry-logback-appender-1.0:${opentelemetryLogbackAppenderVersion}"
+    implementation 'net.ttddyy.observation:datasource-micrometer-spring-boot:2.2.1'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor "org.projectlombok:lombok"
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+    implementation 'org.apache.commons:commons-text:1.11.0'
+    implementation 'jakarta.validation:jakarta.validation-api:3.1.1'
+    implementation 'org.modelmapper:modelmapper:3.2.4'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+//tasks.named('compileJava') {
+//    inputs.files(tasks.named('processResources'))
+//}
+tasks.named('test') {
+    useJUnitPlatform()
+}
+

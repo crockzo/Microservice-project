@@ -1,0 +1,17 @@
+INSERT INTO tbl_library (id, username, book_id) VALUES
+(1, 'rik', 1),
+(2, 'rik', 2),
+(3, 'rik', 3),
+(4, 'rik', 4),
+(5, 'rik', 5),
+(6, 'rik', 6),
+(7, 'rik', 7),
+(8, 'rik', 8),
+(9, 'rik', 9),
+(10, 'crockzo', 10),
+(11, 'crockzo', 11),
+(12, 'crockzo', 12),
+(13, 'crockzo', 13),
+(14, 'crockzo', 14),
+(15, 'crockzo', 15),
+(16, 'crockzo', 16);

@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id("io.freefair.lombok") version "9.5.0"
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
+}
+
+group = 'com.ms'
+version = '0.0.1-SNAPSHOT'
+description = 'User service.'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of("${javaVersion}")
+    }
+}
+
+repositories {
+    if (providers.gradleProperty('useMavenLocalRepo').map { it.toBoolean() }.getOrElse(false)) {
+        mavenLocal()
+    }
+    if (providers.gradleProperty('useSpringSnapshotsRepo').map { it.toBoolean() }.getOrElse(false)) {
+        maven { url = 'https://repo.spring.io/snapshot' }
+    }
+    mavenCentral()
+}
+
+
+dependencies {
+
+
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation 'jakarta.validation:jakarta.validation-api:3.1.1'
+    implementation 'org.modelmapper:modelmapper:3.2.4'
+
+    // Go to Observability project and publish the observability jar in maven local/
+    implementation 'com.ms:observability-starter:0.0.1-SNAPSHOT'
+    // Go to Security project and publish the security jar in maven local.
+//    implementation 'com.ms:security-starter:0.0.1-SNAPSHOT'
+
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

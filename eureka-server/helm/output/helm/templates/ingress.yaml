@@ -1,0 +1,24 @@
+---
+# Source: helm/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "eurekaserver-ingress"
+  labels:
+    app: eureka-service
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    kubernetes.io/ingress.class: nginx
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: "localhost"
+      http:
+        paths:
+          - path: /service(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: "eurekaserver-service"
+                port:
+                  number: 80

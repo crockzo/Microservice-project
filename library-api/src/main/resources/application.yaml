@@ -38,12 +38,21 @@ feign:
     enabled: true
 
 
+
 management:
   endpoints:
     web:
       exposure:
-        include: health, info, env, configprops, metrics, mappings, prometheus
+        include: health, info, env, configprops, metrics, mappings, prometheus, beans
+  endpoint:
+    health:
+      show-details: always
+  otlp:
+    metrics:
+      export:
+        enabled: ${observability.enabled}
   opentelemetry:
+    enabled: ${observability.enabled}
     logging:
       export:
         otlp:
@@ -55,3 +64,13 @@ management:
   tracing:
     sampling:
       probability: 1.0
+
+
+observability:
+  enabled: true
+  metrics:
+    enabled: ${observability.enabled}
+  tracing:
+    enabled: ${observability.enabled}
+  logging:
+    enabled: ${observability.enabled}

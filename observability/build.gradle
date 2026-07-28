@@ -1,0 +1,82 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.ms'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+publishing {
+    publications {
+
+        mavenJava(MavenPublication) {
+
+            from components.java
+
+            groupId = project.group
+            artifactId = 'observability-starter'
+            version = project.version
+        }
+    }
+
+    repositories {
+        mavenLocal()
+    }
+}
+
+ext {
+    springBootVersion = '4.1.0'
+    opentelemetryLogbackAppenderVersion = '2.25.0-alpha'
+    datasourceMicrometerVersion = '2.2.1'
+    aspectjVersion = '1.9.25.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
+    }
+}
+
+dependencies {
+    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+//    annotationProcessor "org.springframework.boot:spring-boot-autoconfigure-processor"
+
+    api 'org.springframework.boot:spring-boot-starter-actuator'
+    api 'org.springframework.boot:spring-boot-starter-opentelemetry'
+
+    // Explicitly mentioning these dependencies even though they are transitive dependencies of starter actuator and Open telemetry
+    api 'io.micrometer:micrometer-core'
+    api 'io.micrometer:micrometer-tracing'
+    api 'io.micrometer:micrometer-observation'
+    api 'io.micrometer:micrometer-registry-prometheus'
+    api 'io.micrometer:micrometer-tracing-bridge-otel'
+
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly "org.aspectj:aspectjweaver:${aspectjVersion}"
+    implementation "io.opentelemetry.instrumentation:opentelemetry-logback-appender-1.0:${opentelemetryLogbackAppenderVersion}"
+    implementation "net.ttddyy.observation:datasource-micrometer-spring-boot:${datasourceMicrometerVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-validation"
+
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-actuator-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-opentelemetry-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

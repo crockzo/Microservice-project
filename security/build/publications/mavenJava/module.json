@@ -1,0 +1,122 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.ms",
+    "module": "security-starter",
+    "version": "0.0.1-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.5.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 25,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "com.ms",
+          "module": "observability-starter",
+          "version": {
+            "requires": "0.0.1-SNAPSHOT"
+          }
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-web"
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-security"
+        },
+        {
+          "group": "io.jsonwebtoken",
+          "module": "jjwt-api",
+          "version": {
+            "requires": "0.13.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "security-starter-0.0.1-SNAPSHOT.jar",
+          "url": "security-starter-0.0.1-SNAPSHOT.jar",
+          "size": 19074,
+          "sha512": "7efe554b3a14d42f8551649b80e115fd9d46216eef815e4bd6f774075294a1ea29338b68b6eba5c135e5cfdf8613e72e319a6ab437befcb129267c0f8564c9a5",
+          "sha256": "30f5a644c7b01ab8bc33fe45bea70158d69fc160f24f191553b6e8514e81593b",
+          "sha1": "49fc72a5db31e54119cd5b329cc5097ebae0250b",
+          "md5": "e13dbf5669a41c62c38582cad182d441"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 25,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.ms",
+          "module": "observability-starter",
+          "version": {
+            "requires": "0.0.1-SNAPSHOT"
+          }
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-web"
+        },
+        {
+          "group": "org.springframework.boot",
+          "module": "spring-boot-starter-security"
+        },
+        {
+          "group": "io.jsonwebtoken",
+          "module": "jjwt-api",
+          "version": {
+            "requires": "0.13.0"
+          }
+        },
+        {
+          "group": "io.jsonwebtoken",
+          "module": "jjwt-impl",
+          "version": {
+            "requires": "0.13.0"
+          }
+        },
+        {
+          "group": "io.jsonwebtoken",
+          "module": "jjwt-jackson",
+          "version": {
+            "requires": "0.13.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "security-starter-0.0.1-SNAPSHOT.jar",
+          "url": "security-starter-0.0.1-SNAPSHOT.jar",
+          "size": 19074,
+          "sha512": "7efe554b3a14d42f8551649b80e115fd9d46216eef815e4bd6f774075294a1ea29338b68b6eba5c135e5cfdf8613e72e319a6ab437befcb129267c0f8564c9a5",
+          "sha256": "30f5a644c7b01ab8bc33fe45bea70158d69fc160f24f191553b6e8514e81593b",
+          "sha1": "49fc72a5db31e54119cd5b329cc5097ebae0250b",
+          "md5": "e13dbf5669a41c62c38582cad182d441"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+
+observability:
+  enabled: false
+  metrics:
+    enabled: ${observability.enabled}
+  tracing:
+    enabled: ${observability.enabled}
+  logging:
+    enabled: ${observability.enabled}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, env, configprops, metrics, mappings, prometheus, beans
+  endpoint:
+    health:
+      show-details: always
+  otlp:
+    metrics:
+      export:
+        enabled: ${observability.enabled}
+  opentelemetry:
+    enabled: ${observability.enabled}
+    logging:
+      export:
+        otlp:
+          endpoint: http://localhost:4318/v1/logs
+    tracing:
+      export:
+        otlp:
+          endpoint: http://localhost:4318/v1/traces
+  tracing:
+    sampling:
+      probability: 1.0
+
+

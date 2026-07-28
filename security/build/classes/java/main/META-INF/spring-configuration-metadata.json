@@ -1,0 +1,33 @@
+{
+  "groups": [
+    {
+      "name": "openuplearning.jwt",
+      "type": "com.ms.security.jwt.JwtProperties",
+      "sourceType": "com.ms.security.jwt.JwtProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "openuplearning.jwt.base64-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.ms.security.jwt.JwtProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "openuplearning.jwt.secret",
+      "type": "java.lang.String",
+      "sourceType": "com.ms.security.jwt.JwtProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "openuplearning.jwt.token-validity-in-milli-seconds",
+      "type": "java.lang.Long",
+      "sourceType": "com.ms.security.jwt.JwtProperties",
+      "defaultValue": 1800000
+    }
+  ],
+  "hints": [],
+  "ignored": {
+    "properties": []
+  }
+}

@@ -1,0 +1,5 @@
+openuplearning:
+  jwt:
+    secret: mysecretisverysecurethatyoucanneverfinditandforgotaboutguessingit
+    base64Secret: bXlzZWNyZXQ=
+    tokenValidityInMilliSeconds: 180000

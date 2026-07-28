@@ -1,0 +1,72 @@
+plugins {
+	id 'java-library'
+	id 'maven-publish'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.ms'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(25)
+	}
+}
+ext {
+	jwt_version = "0.13.0"
+	springBootVersion = "4.1.0"
+}
+
+publishing {
+	publications {
+
+		mavenJava(MavenPublication) {
+
+			from components.java
+
+			groupId = project.group
+			artifactId = 'security-starter'
+			version = project.version
+		}
+	}
+
+	repositories {
+		mavenLocal()
+	}
+}
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
+	}
+}
+
+
+dependencies {
+	annotationProcessor 'org.projectlombok:lombok'
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+	// TODO : First Publish Observability project to maven local repository.
+	api 'com.ms:observability-starter:0.0.1-SNAPSHOT'
+	api 'org.springframework.boot:spring-boot-starter-web'
+	api 'org.springframework.boot:spring-boot-starter-security'
+	api "io.jsonwebtoken:jjwt-api:${jwt_version}"
+
+	compileOnly 'org.projectlombok:lombok'
+
+	runtimeOnly "io.jsonwebtoken:jjwt-impl:${jwt_version}"
+	runtimeOnly "io.jsonwebtoken:jjwt-jackson:${jwt_version}"
+
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-security-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

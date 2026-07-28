@@ -27,6 +27,7 @@ eureka:
     service-url:
       defaultZone: "http://localhost:8761/eureka"
 
+
 management:
   endpoints:
     web:
@@ -35,19 +36,12 @@ management:
   endpoint:
     health:
       show-details: always
-
-  # Spring boot + Micrometer related metrics and tracing configs. For Spring-boot-Micrometer-* packages
   otlp:
     metrics:
       export:
-        base-time-unit: SECONDS
-  tracing:
-    sampling:
-      probability: 1.0
-
-  # Open telemetry related configs. For all OpenTelemetry packages
+        enabled: ${observability.enabled}
   opentelemetry:
-    enabled: true
+    enabled: ${observability.enabled}
     logging:
       export:
         otlp:
@@ -56,11 +50,19 @@ management:
       export:
         otlp:
           endpoint: http://localhost:4318/v1/traces
+  tracing:
+    sampling:
+      probability: 1.0
 
-#  metrics:
-#    distribution:
-#      slo:
-#        http.server.requests: 10, 25, 50, 75, 100, 150, 200, 300, 500, 750, 1000, 1500, 2000, 3000, 5000
+
+observability:
+  enabled: true
+  metrics:
+    enabled: ${observability.enabled}
+  tracing:
+    enabled: ${observability.enabled}
+  logging:
+    enabled: ${observability.enabled}
 
 
 

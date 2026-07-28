@@ -1,9 +1,9 @@
 plugins {
-    id 'org.springframework.boot' version "${springBootVersion}"
-    id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
     id 'java'
     id 'java-library'
-//    id("io.freefair.lombok") version "9.5.0"
+    id("io.freefair.lombok") version "9.5.0"
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
 }
 
 group = 'com.ms'
@@ -35,24 +35,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
-    // observability Dependencies
+    // This brings all the libraries required to enable observability.
+    implementation 'com.ms:observability-starter:0.0.1-SNAPSHOT'
 
-    // This actuator does not involve tracing ability at all, it just have metrics and observation spi
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-
-    // This contains MeterRegistry for prometheus so that metrics can be set up from prometheus polling mechanism.
-    implementation 'io.micrometer:micrometer-registry-prometheus'
-
-    // This contains micrometer tracing modules, mostly this
-    implementation 'org.springframework.boot:spring-boot-starter-opentelemetry'
-
-    // Source: https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
-//    implementation 'org.aspectj:aspectjweaver:1.9.25.1'
-//    implementation 'org.springframework.boot:spring-boot-starter-aop:4.0.0-M2'
-
-    // This contains all log related modules.
-    implementation "io.opentelemetry.instrumentation:opentelemetry-logback-appender-1.0:${opentelemetryLogbackAppenderVersion}"
-    implementation 'net.ttddyy.observation:datasource-micrometer-spring-boot:2.2.1'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor "org.projectlombok:lombok"
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
@@ -72,9 +57,7 @@ dependencyManagement {
     }
 }
 
-//tasks.named('compileJava') {
-//    inputs.files(tasks.named('processResources'))
-//}
+
 tasks.named('test') {
     useJUnitPlatform()
 }

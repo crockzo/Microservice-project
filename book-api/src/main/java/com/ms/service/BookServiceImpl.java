@@ -3,17 +3,12 @@ package com.ms.service;
 import com.ms.dto.BookDTO;
 import com.ms.exception.BookNotFoundException;
 import com.ms.model.Book;
-import com.ms.observability.annotation.Observed;
 import com.ms.repository.BookRepository;
-import io.micrometer.core.annotation.Counted;
-import io.micrometer.core.annotation.Timed;
-import io.micrometer.core.aop.MeterTag;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @Slf4j
@@ -34,7 +29,6 @@ public class BookServiceImpl implements BookService {
   }
 
   @Override
-  @Observed(name = "book.fetch.observed")
   public BookDTO find(int id) {
     log.info("Finding book by id :{} from db.", id);
     BookDTO book = toDto(getBookById(id));
@@ -73,9 +67,10 @@ public class BookServiceImpl implements BookService {
     return updatedBook;
   }
 
-
   private Book getBookById(int id) {
-    return repository.findById(id).orElseThrow(() -> new BookNotFoundException("Book by given id not found."));
+    return repository
+        .findById(id)
+        .orElseThrow(() -> new BookNotFoundException("Book by given id not found."));
   }
 
   private BookDTO toDto(Book book) {

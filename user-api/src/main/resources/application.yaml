@@ -57,7 +57,7 @@ management:
 
 
 observability:
-  enabled: false
+  enabled: true
   metrics:
     enabled: ${observability.enabled}
   tracing:

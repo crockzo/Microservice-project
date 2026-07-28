@@ -1,1 +1,1 @@
-autoconfigure.com.ms.security.OpenUpLearningSecurityAutoConfiguration
+com.ms.security.autoconfigure.MicroServiceSecurityAutoConfiguration
